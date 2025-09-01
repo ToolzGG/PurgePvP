@@ -7,7 +7,7 @@ The playercharacter and playerframe are excluded from all restrictions, ensuring
 ## Features
 
 - **PvP Target Blocking**:
-  - Prevents interactions (left-clicks) with PvP-flagged players using an invisible Blockframe (50x50 pixels) at the cursor.
+  - Prevents interactions with PvP-flagged players using an invisible Blockframe (50x50 pixels) at the cursor.
   - Changes the cursor to "UnableCrosshair.blp" on mouseover or targeting of PvP players.
   - Suppresses tooltips for PvP targets.
   - Floating Combat Text messages "FCT" (toggleable):
@@ -67,4 +67,5 @@ The playercharacter and playerframe are excluded from all restrictions, ensuring
 4. **Additional Notes**:
 
    - Im not a programmer, this Addon was created using AI-Assistance. Error-Detection might take some time. 
+
 
