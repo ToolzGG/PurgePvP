@@ -21,7 +21,7 @@ The playercharacter and playerframe are excluded from all restrictions, ensuring
 
 - **Player Exclusion**:
   - The playercharacter and playerframe are exempt from all restrictions:
-    - No warnings, no cleartarget, no blockFrame, no cursor change, normal tooltips.
+    - No warnings, no cleartarget, no Blockframe, no cursor change, normal tooltips.
     - Allows casting spells on self, even when PvP-flagged.
 
 - **PvP Status Warnings**:
@@ -30,7 +30,7 @@ The playercharacter and playerframe are excluded from all restrictions, ensuring
   - Sound: "Raid Warning" (toggleable).
 
 - **Safe Zone Logic**:
-  - Addon automatically disables in safe zones (e.g., Dalaran, Shattrath,) if enabled
+  - Addon automatically disables in safe zones (e.g., Orgrimmar, Stormwind) if enabled
   - Warning when leaving a safe zone while PvP-flagged:
     - FCT: "Warning: You are PvP-flagged and left a safe zone!".
     - Sound: "RaidWarning".
@@ -67,5 +67,6 @@ The playercharacter and playerframe are excluded from all restrictions, ensuring
 4. **Additional Notes**:
 
    - Im not a programmer, this Addon was created using AI-Assistance. Error-Detection might take some time. 
+
 
 
