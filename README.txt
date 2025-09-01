@@ -51,7 +51,7 @@ The playercharacter and playerframe are excluded from all restrictions, ensuring
 
 ## Installation
 
-1. **Download**: Get the latest version from [Releases](https://github.com/ToolzGG/PurgePvP/releases) or clone the repository.
+1. **Download**: Get the latest version from [Releases](https://github.com/ToolzGG/PurgePvP).
 2. **Extract**:
    - Extract the PurgePvP folder to ./World of Warcraft/Interface/AddOns/.
    - Folder structure:
@@ -65,4 +65,5 @@ The playercharacter and playerframe are excluded from all restrictions, ensuring
    - Log in and verify the chat message: "PurgePvP loaded! Use /purgepvp for options."
    
 4. **Additional Notes**:
+
    - Im not a programmer, this Addon was created using AI-Assistance. Error-Detection might take some time. 
