@@ -68,5 +68,6 @@ The playercharacter and playerframe are excluded from all restrictions, ensuring
 
    - Im not a programmer, this Addon was created using AI-Assistance. Error-Detection might take some time. 
 
+## License
 
-
+This addon is licensed under the MIT License. See the LICENSE file for details.
