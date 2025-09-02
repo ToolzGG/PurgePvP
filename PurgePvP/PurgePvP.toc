@@ -1,8 +1,8 @@
 ## Interface: 30300
 ## Title: PurgePvP
-## Notes: Blocks interactions with PvP-flagged targets, clears PvP targets, warns if you are PvP-flagged, excludes player.
-## Author: Toolz
-## Version: 1.0.0
+## Notes: Prevents interactions with PvP-flagged targets. /purgepvp for Options.
+## Author: ToolzGG
+## Version: 1.0
 ## SavedVariables: PurgePvPDB
 
 PurgePvP.lua
