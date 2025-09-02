@@ -1,53 +1,18 @@
 # PurgePvP
 
-PurgePvP is a World of Warcraft addon for patch 3.3.5 (Project Epoch) designed to help PvE players avoid accidental interactions with PvP-flagged players.
-It blocks clicks and tooltips on PvP targets, automatically clears PvP targets, displays warnings, and supports safezones.
-The playercharacter and playerframe are excluded from all restrictions, ensuring self-targeted spells always work.
+PurgePvP is a World of Warcraft addon designed for version 3.3.5 that blocks interactions with PvP-flagged targets,
+clears PvP targets, and provides warnings when you are PvP-flagged. It includes toggle options and safety features.
 
 ## Features
-
-- **PvP Target Blocking**:
-  - Prevents interactions with PvP-flagged players using an invisible Blockframe (50x50 pixels) at the cursor.
-  - Changes the cursor to "UnableCrosshair.blp" on mouseover or targeting of PvP players.
-  - Suppresses tooltips for PvP targets.
-  - Floating Combat Text messages "FCT" (toggleable):
-    - "PvP Target detected! Target cleared!" (on targeting).
-    - "PvP Target detected! Interaction blocked!" (on mouseover).
-    - "Click on PvP-flagged target blocked!" (on left-click).
-  - UI Text: "PvP Target!" (5 seconds) on interaction with PvP targets.
-
-- **Automatic Clear-Target**:
-  - Instantly clears the selection of PvP-flagged players.
-
-- **Player Exclusion**:
-  - The playercharacter and playerframe are exempt from all restrictions:
-    - No warnings, no cleartarget, no Blockframe, no cursor change, normal tooltips.
-    - Allows casting spells on self, even when PvP-flagged.
-
-- **PvP Status Warnings**:
-  - FCT message: "You are PvP-flagged! Avoid combat for 15 minutes!" when PvP flag is activated.
-  - UI Text: "YOU ARE PVP FLAGGED! AVOID CASTING!" (10 seconds).
-  - Sound: "Raid Warning" (toggleable).
-
-- **Safe Zone Logic**:
-  - Addon automatically disables in safe zones (e.g., Orgrimmar, Stormwind) if enabled
-  - Warning when leaving a safe zone while PvP-flagged:
-    - FCT: "Warning: You are PvP-flagged and left a safe zone!".
-    - Sound: "RaidWarning".
-
-- **Options**:
-  - /purgepvp: list all options in general chat.
-  - /purgepvp toggle: Enable/disable the addon.
-  - /purgepvp sound: Toggle sound alerts.
-  - /purgepvp warning: Toggle FCT warnings.
-  - /purgepvp safezone: Toggle auto-disable in safe zones.
-  - /purgepvp leavesafe: Toggle warning when leaving safe zones.
-
-## Requirements
-
-- **Game Version**: World of Warcraft 3.3.5 (Project Epoch).
-- **Tested on**: Project Epoch (Kezan, Gurubashi).
-- **Dependencies**: None.
+- Blocks interactions (e.g., casting, targeting) with PvP-flagged players.
+- Automatically clears PvP targets.
+- Warns with combat text and sound when PvP-flagged.
+- Auto-disable of PvP status.
+- Safe zone and Instance/Battleground disable options.
+- 60-second PvP status check.
+- Safety features include disabling of blocking, targeting and interaction-warning,
+  to ensure you can defend yourself if you should get flagged by your AoE-Abilities. This can't be turned off!
+- UI options panel with toggle settings, reset button, and GitHub link.
 
 ## Installation
 
@@ -63,7 +28,42 @@ The playercharacter and playerframe are excluded from all restrictions, ensuring
 3. **Start Game**:
    - Enable "Load out of date addons" in the addon menu.
    - Log in and verify the chat message: "PurgePvP loaded! Use /purgepvp for options."
-   
+
+## Configuration
+- Open the options panel with /purgepvp or via the Interface menu (Esc > Interface > AddOns > PurgePvP).
+- Available commands:
+  - /purgepvp - Open the options panel.
+  - /purgepvp toggle - Toggle addon on/off.
+  - /purgepvp sound - Toggle sound alerts.
+  - /purgepvp warning - Toggle warning messages.
+  - /purgepvp safezone - Toggle auto-disable in safe zones.
+  - /purgepvp leavesafe - Toggle warning when leaving safe zones.
+  - /purgepvp leavesafemessages - Toggle messages when leaving safe zones.
+  - /purgepvp interval - Toggle 60-second PvP status check.
+  - /purgepvp autopvp - Toggle auto PvP status disable.
+  - /purgepvp autopvpmessages - Toggle auto PvP disable messages.
+  - /purgepvp instances - Toggle auto-disable in instances/Battlegrounds.
+
+## Options Panel
+- Enable PurgePvP: Toggle the addon on or off.
+- Sound Alerts: Enable or disable sound warnings.
+- Warning Messages: Enable or disable combat text and UI warnings.
+- Disable in Safe Zones: Disable features in safe zones (e.g., Dalaran).
+- Warn on Leaving Safe Zones: Enable leave safe zone checks.
+- Leave Safe Zone Messages: Enable messages when leaving a safe zone while PvP-flagged.
+- 60-Second PvP Check: Enable 60-second PvP status checks.
+- Auto PvP Disable: Automatically disable PvP status when flagged.
+- Auto PvP Disable Messages: Enable messages for auto PvP disable.
+- Disable in Instances/Battlegrounds: Disable features in instances and Battlegrounds.
+- Reset Defaults: Reset all settings to default values.
+- GitHub: Click to visit the PurgePvP GitHub repository (https://github.com/ToolzGG/PurgePvP).
+
+## Requirements
+
+- Game Version: World of Warcraft 3.3.5 (Project Epoch).
+- Tested on: Project Epoch (Kezan, Gurubashi).
+- Dependencies: None.
+
 ## Additional Notes:
 
    - Im not a programmer, this Addon was created using AI-Assistance. Error-Detection might take some time. 
@@ -71,4 +71,3 @@ The playercharacter and playerframe are excluded from all restrictions, ensuring
 ## License
 
 This addon is licensed under the MIT License. See the LICENSE file for details.
-
