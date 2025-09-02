@@ -64,10 +64,11 @@ The playercharacter and playerframe are excluded from all restrictions, ensuring
    - Enable "Load out of date addons" in the addon menu.
    - Log in and verify the chat message: "PurgePvP loaded! Use /purgepvp for options."
    
-4. **Additional Notes**:
+## Additional Notes:
 
    - Im not a programmer, this Addon was created using AI-Assistance. Error-Detection might take some time. 
 
 ## License
 
 This addon is licensed under the MIT License. See the LICENSE file for details.
+
