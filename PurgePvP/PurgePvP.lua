@@ -12,6 +12,7 @@ PurgePvPDB = PurgePvPDB or {
     enableInstanceDisable = true,
     enableAutoPvPDisableMessages = false,
     enableLeaveSafeMessages = false,
+    enableTooltipSuppression = false,
 }
 
 local frame = CreateFrame("Frame")
@@ -284,6 +285,12 @@ local function loadSettings()
         PurgePvPDB.enableLeaveSafeMessages = self:GetChecked()
         print("|cFF00FF00PurgePvP leave safe zone messages is now " .. (PurgePvPDB.enableLeaveSafeMessages and "enabled" or "disabled") .. "!|r")
     end)
+    local tooltipSuppressionCheck = createCheckbutton(optionUI.panel, 200, -190, "Suppress PvP Tooltips", "Enable or disable tooltip suppression for PvP-flagged targets and pets.")
+    tooltipSuppressionCheck:SetChecked(PurgePvPDB.enableTooltipSuppression)
+    tooltipSuppressionCheck:SetScript("OnClick", function(self)
+        PurgePvPDB.enableTooltipSuppression = self:GetChecked()
+        print("|cFF00FF00PurgePvP tooltip suppression is now " .. (PurgePvPDB.enableTooltipSuppression and "enabled" or "disabled") .. "!|r")
+    end)
     local resetButton = CreateFrame("Button", nil, optionUI.panel, "UIPanelButtonTemplate")
     resetButton:SetPoint("BOTTOMLEFT", 16, 16)
     resetButton:SetSize(120, 25)
@@ -302,6 +309,7 @@ local function loadSettings()
             enableInstanceDisable = true,
             enableAutoPvPDisableMessages = false,
             enableLeaveSafeMessages = false,
+            enableTooltipSuppression = false,
         }
         enableCheck:SetChecked(PurgePvPDB.enabled)
         soundCheck:SetChecked(PurgePvPDB.enableSound)
@@ -313,6 +321,7 @@ local function loadSettings()
         autoPvPCheck:SetChecked(PurgePvPDB.enableAutoPvPDisable)
         autoPvPMessagesCheck:SetChecked(PurgePvPDB.enableAutoPvPDisableMessages)
         instanceCheck:SetChecked(PurgePvPDB.enableInstanceDisable)
+        tooltipSuppressionCheck:SetChecked(PurgePvPDB.enableTooltipSuppression)
         print("|cFF00FF00PurgePvP settings reset to defaults!|r")
         if PurgePvPDB.enabled then
             inSafeZone = IsInSafeZone()
@@ -441,7 +450,9 @@ local function OnEvent(self, event, ...)
                 end)
             end
             if warningFrame then warningFrame:Hide() end
-            GameTooltip:Hide()
+            if PurgePvPDB.enableTooltipSuppression then
+                GameTooltip:Hide()
+            end
             warningFrame = CreateFrame("Frame", nil, UIParent)
             warningFrame:SetSize(600, 120)
             warningFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
@@ -502,7 +513,9 @@ local function OnEvent(self, event, ...)
                 end)
             end
             if warningFrame then warningFrame:Hide() end
-            GameTooltip:Hide()
+            if PurgePvPDB.enableTooltipSuppression then
+                GameTooltip:Hide()
+            end
             warningFrame = CreateFrame("Frame", nil, UIParent)
             warningFrame:SetSize(600, 120)
             warningFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
@@ -584,6 +597,9 @@ SlashCmdList["PURGEPVP"] = function(msg)
             inInstanceOrBattleground = IsInInstanceOrBattleground()
             StartIntervalCheck()
         end
+    elseif cmd == "tooltips" then
+        PurgePvPDB.enableTooltipSuppression = not PurgePvPDB.enableTooltipSuppression
+        print("|cFF00FF00PurgePvP tooltip suppression is now " .. (PurgePvPDB.enableTooltipSuppression and "enabled" or "disabled") .. "!|r")
     else
         print("|cFF00FF00PurgePvP commands:|r")
         print("/purgepvp - Open the options panel")
@@ -597,5 +613,6 @@ SlashCmdList["PURGEPVP"] = function(msg)
         print("/purgepvp autopvp - Toggle auto PvP status disable")
         print("/purgepvp autopvpmessages - Toggle auto PvP disable messages")
         print("/purgepvp instances - Toggle auto-disable in instances")
+        print("/purgepvp tooltips - Toggle PvP tooltip suppression")
     end
 end
