@@ -55,17 +55,20 @@ local function IsPetOrMinion(unit)
     if not UnitExists(unit) then
         return false
     end
-    GameTooltip:SetOwner(UIParent, "ANCHOR_NONE")
-    GameTooltip:SetUnit(unit)
-    for i = 1, GameTooltip:NumLines() do
-        local text = _G["GameTooltipTextLeft" .. i]:GetText()
+    local tooltip = CreateFrame("GameTooltip", "PurgePvPTooltip", nil, "GameTooltipTemplate")
+    tooltip:SetOwner(UIParent, "ANCHOR_NONE")
+    tooltip:SetUnit(unit)
+    local isPet = false
+    for i = 1, tooltip:NumLines() do
+        local text = _G["PurgePvPTooltipTextLeft" .. i]:GetText()
         if text and (string.find(text, "'s Minion") or string.find(text, "'s Pet") or string.find(text, "Pet of") or string.find(text, "Hunter's Pet")) then
-            GameTooltip:Hide()
-            return true
+            isPet = true
+            break
         end
     end
-    GameTooltip:Hide()
-    return false
+    tooltip:Hide()
+    tooltip:ClearLines()
+    return isPet
 end
 
 local function GetPetOwner(unit)
@@ -410,7 +413,6 @@ local function OnEvent(self, event, ...)
             end
             if not isCombatSafetyActive then
                 ClearTarget()
-                GameTooltip:Hide()
                 if blockFrame then blockFrame:Hide() end
                 blockFrame = CreateFrame("Button", nil, UIParent)
                 blockFrame:SetSize(50, 50)
@@ -427,28 +429,25 @@ local function OnEvent(self, event, ...)
                         lastMessageTime = GetTime()
                     end
                 end)
-                blockFrame:SetScript("OnEnter", function() GameTooltip:Hide() end)
+                blockFrame:SetScript("OnUpdate", function(self, elapsed)
+                    lastMouseoverCheck = lastMouseoverCheck + elapsed
+                    if lastMouseoverCheck > 0.1 then
+                        if not UnitExists("mouseover") or UnitIsUnit("mouseover", "player") or not IsPvPTarget("mouseover") then
+                            self:Hide()
+                            blockFrame = nil
+                        end
+                        lastMouseoverCheck = 0
+                    end
+                end)
             end
             if warningFrame then warningFrame:Hide() end
+            GameTooltip:Hide()
             warningFrame = CreateFrame("Frame", nil, UIParent)
             warningFrame:SetSize(600, 120)
             warningFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
             local warningText = warningFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalHuge")
             warningText:SetText("|cFFFF0000PvP Target or Pet!|r")
             CreateDelayedAction(warningFrame, 3)
-            if not isCombatSafetyActive then
-                blockFrame:SetScript("OnUpdate", function(self, elapsed)
-                    lastMouseoverCheck = lastMouseoverCheck + elapsed
-                    if lastMouseoverCheck > 0.1 then
-                        if not UnitExists("mouseover") or UnitIsUnit("mouseover", "player") or not IsPvPTarget("mouseover") then
-                            blockFrame:Hide()
-                            blockFrame = nil
-                            GameTooltip:Hide()
-                        end
-                        lastMouseoverCheck = 0
-                    end
-                end)
-            end
         else
             if blockFrame then
                 blockFrame:Hide()
@@ -475,7 +474,6 @@ local function OnEvent(self, event, ...)
                 PlaySound("RaidWarning", "Master")
             end
             if not isCombatSafetyActive then
-                GameTooltip:Hide()
                 if blockFrame then blockFrame:Hide() end
                 blockFrame = CreateFrame("Button", nil, UIParent)
                 blockFrame:SetSize(50, 50)
@@ -492,28 +490,25 @@ local function OnEvent(self, event, ...)
                         lastMessageTime = GetTime()
                     end
                 end)
-                blockFrame:SetScript("OnEnter", function() GameTooltip:Hide() end)
+                blockFrame:SetScript("OnUpdate", function(self, elapsed)
+                    lastMouseoverCheck = lastMouseoverCheck + elapsed
+                    if lastMouseoverCheck > 0.1 then
+                        if not UnitExists("mouseover") or UnitIsUnit("mouseover", "player") or not IsPvPTarget("mouseover") then
+                            self:Hide()
+                            blockFrame = nil
+                        end
+                        lastMouseoverCheck = 0
+                    end
+                end)
             end
             if warningFrame then warningFrame:Hide() end
+            GameTooltip:Hide()
             warningFrame = CreateFrame("Frame", nil, UIParent)
             warningFrame:SetSize(600, 120)
             warningFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
             local warningText = warningFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalHuge")
             warningText:SetText("|cFFFF0000PvP Target or Pet!|r")
             CreateDelayedAction(warningFrame, 3)
-            if not isCombatSafetyActive then
-                blockFrame:SetScript("OnUpdate", function(self, elapsed)
-                    lastMouseoverCheck = lastMouseoverCheck + elapsed
-                    if lastMouseoverCheck > 0.1 then
-                        if not UnitExists("mouseover") or UnitIsUnit("mouseover", "player") or not IsPvPTarget("mouseover") then
-                            blockFrame:Hide()
-                            blockFrame = nil
-                            GameTooltip:Hide()
-                        end
-                        lastMouseoverCheck = 0
-                    end
-                end)
-            end
         else
             if blockFrame then
                 blockFrame:Hide()
