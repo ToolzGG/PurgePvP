@@ -61,7 +61,7 @@ local function IsPetOrMinion(unit)
     local isPet = false
     for i = 1, tooltip:NumLines() do
         local text = _G["PurgePvPTooltipTextLeft" .. i]:GetText()
-        if text and (string.find(text, "'s Minion") or string.find(text, "'s Pet") or string.find(text, "Pet of") or string.find(text, "Hunter's Pet")) then
+        if text and (string.find(text, "'s Minion") or string.find(text, "'s Pet")) then
             isPet = true
             break
         end
