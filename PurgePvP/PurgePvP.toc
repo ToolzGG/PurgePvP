@@ -2,8 +2,9 @@
 ## Title: PurgePvP
 ## Notes: Prevents interactions with PvP-flagged targets. /purgepvp for Options.
 ## Author: ToolzGG
-## Version: 1.0.3
+## Version: 1.1.3
 ## SavedVariables: PurgePvPDB
 
 PurgePvP.lua
+
 
