@@ -1,24 +1,26 @@
-# PurgePvP
+# PurgePvP ⚔️
 
-PurgePvP is a World of Warcraft addon designed for version 3.3.5 that blocks interactions with PvP-flagged targets,
-clears PvP targets, and provides warnings when you are PvP-flagged. It includes toggle options and safety features.
+PurgePvP is a World of Warcraft addon designed for version 3.3.5 (Wrath of the Lich King), specifically tailored for the Project Epoch server. It prevents accidental PvP activation by blocking interactions with PvP-flagged targets, clearing PvP targets, and providing customizable warnings when you are PvP-flagged. With a user-friendly options panel and robust safety features, it ensures a seamless experience in PvP-heavy environments.
 
-## Features
-- Blocks interactions (e.g., casting, targeting) with PvP-flagged players.
-- Automatically clears PvP targets.
-- Warns with combat text and sound when PvP-flagged.
-- Auto-disable of PvP status.
-- Safe zone and Instance/Battleground disable options.
-- 60-second PvP status check.
-- Safety features include disabling of blocking, targeting and interaction-warning,
-  to ensure you can defend yourself if you should get flagged by your AoE-Abilities. This can't be turned off!
-- UI options panel with toggle settings, reset button, and GitHub link.
+## 🚀 Features
 
-## Installation
+- **🔒 Block PvP Interactions**: Prevents casting, targeting, or interacting with PvP-flagged players and pets using a 10x10-pixel block frame.
+- **🧹 Auto-Clear PvP Targets**: Automatically clears PvP-flagged targets to avoid accidental engagement.
+- **🚨 PvP Warnings**: Displays warnings in the `UIErrorsFrame` ("You are PvP-flagged!") with optional `RaidWarning` sound:
+  - Initial warning 3 seconds after login or `/reload`.
+  - 60-second interval checks (toggleable).
+- **🛑 Secure PvP Deactivation**: When PvP-Flagged, automatically enables and disables PvP status when entering safe zones to avoid PvP-Deactivation Timer not getting recognised by the Server (toggleable).
+- **🏰 Safe Zone & Instance Support**: Suppresses warnings and interactions in safe zones (e.g., Orgrimmar, Stormwind) and instances/battlegrounds (toggleable).
+- **🛡️ Safety Features**: Disables blocking, targeting, and warnings if flagged by AoE abilities to ensure self-defense (non-toggleable).
+- **🖥️ Options Panel**: Intuitive UI under Interface > AddOns > PurgePvP with toggle settings, reset button, and GitHub link.
+- **⚙️ Slash Commands**: Flexible configuration via commands like `/purgepvp toggle`, `/purgepvp warning`, and more.
 
-1. **Download**: Get the latest version from (https://github.com/ToolzGG/PurgePvP).
+## 📥 Installation
+
+1. **Download**:
+   - Get the latest version from [https://github.com/ToolzGG/PurgePvP](https://github.com/ToolzGG/PurgePvP).
 2. **Extract**:
-   - Extract the PurgePvP folder to ./World of Warcraft/Interface/AddOns/.
+   - Extract the `PurgePvP` folder to `./World of Warcraft/Interface/AddOns/`.
    - Folder structure:
      ```
      Interface/AddOns/PurgePvP/
@@ -26,48 +28,68 @@ clears PvP targets, and provides warnings when you are PvP-flagged. It includes 
        ├── PurgePvP.lua
      ```
 3. **Start Game**:
-   - Enable "Load out of date addons" in the addon menu.
+   - Enable "Load out of date addons" in the addon menu (Esc > AddOns).
    - Log in and verify the chat message: "PurgePvP loaded! Use /purgepvp for options."
 
-## Configuration
-- Open the options panel with /purgepvp or via the Interface menu (Esc > Interface > AddOns > PurgePvP).
-- Available commands:
-  - /purgepvp - Open the options panel.
-  - /purgepvp toggle - Toggle addon on/off.
-  - /purgepvp sound - Toggle sound alerts.
-  - /purgepvp warning - Toggle warning messages.
-  - /purgepvp safezone - Toggle auto-disable in safe zones.
-  - /purgepvp leavesafe - Toggle warning when leaving safe zones.
-  - /purgepvp leavesafemessages - Toggle messages when leaving safe zones.
-  - /purgepvp interval - Toggle 60-second PvP status check.
-  - /purgepvp autopvp - Toggle auto PvP status disable.
-  - /purgepvp autopvpmessages - Toggle auto PvP disable messages.
-  - /purgepvp instances - Toggle auto-disable in instances/Battlegrounds.
+## ⚙️ Configuration
 
-## Options Panel
-- Enable PurgePvP: Toggle the addon on or off.
-- Sound Alerts: Enable or disable sound warnings.
-- Warning Messages: Enable or disable combat text and UI warnings.
-- Disable in Safe Zones: Disable features in safe zones (e.g., Dalaran).
-- Warn on Leaving Safe Zones: Enable leave safe zone checks.
-- Leave Safe Zone Messages: Enable messages when leaving a safe zone while PvP-flagged.
-- 60-Second PvP Check: Enable 60-second PvP status checks.
-- Auto PvP Disable: Automatically disable PvP status when flagged.
-- Auto PvP Disable Messages: Enable messages for auto PvP disable.
-- Disable in Instances/Battlegrounds: Disable features in instances and Battlegrounds.
-- Reset Defaults: Reset all settings to default values.
-- GitHub: Click to visit the PurgePvP GitHub repository (https://github.com/ToolzGG/PurgePvP).
+### Slash Commands
+Access all settings via the options panel or slash commands:
+- `/purgepvp` - Opens the options panel.
+- `/purgepvp toggle` - Toggles the addon on/off.
+- `/purgepvp sound` - Toggles sound alerts (`RaidWarning` sound).
+- `/purgepvp warning` - Toggles warning messages in `UIErrorsFrame`.
+- `/purgepvp safezone` - Toggles auto-disable in safe zones (e.g., Dalaran).
+- `/purgepvp instances` - Toggles auto-disable in instances and battlegrounds.
+- `/purgepvp securepvp`: Toggles secure PvP deactivation in safe zones.
+- `/purgepvp flight` - Toggles warning suppression on flight paths.
 
-## Requirements
+### Options Panel 🖱️
+- **Enable PurgePvP**: Toggle the addon on or off.
+- **Sound Alerts**: Enable/disable `RaidWarning` sound for PvP warnings.
+- **Warning Messages**: Enable/disable `UIErrorsFrame` warnings ("You are PvP-flagged!").
+- **Disable in Safe Zones**: Suppress features in safe zones (e.g., Shattrath, Orgrimmar).
+- **Disable in Instances/Battlegrounds**: Suppress features in dungeons, raids, or battlegrounds.
+- **Secure PvP Deactivation**: Securely deactivates PvP status in safe zones (default: enabled).
+- **Disable on Flight Paths**: Suppress warnings during flight paths.
+- **Reset Defaults**: Reset all settings to their default values.
+- **GitHub Link**: Visit the PurgePvP repository ([https://github.com/ToolzGG/PurgePvP](https://github.com/ToolzGG/PurgePvP)).
 
-- Game Version: World of Warcraft 3.3.5 (Project Epoch).
-- Tested on: Project Epoch (Kezan, Gurubashi).
-- Dependencies: None.
+## 🔧 Requirements
 
-## Additional Notes:
+- **Game Version**: World of Warcraft 3.3.5 (Wrath of the Lich King).
+- **Tested on**: Project Epoch (Kezan, Gurubashi).
+- **Dependencies**: None.
 
-   - Im not a programmer, this Addon was created using AI-Assistance. Error-Detection might take some time. 
+## 🛠️ Changelog
 
-## License
+### Version 1.1.4 (Latest)
+- Set `BLOCK_FRAME_SIZE` to 10x10 pixels for reliable click blocking.
 
-This addon is licensed under the MIT License. See the LICENSE file for details.
+### Previous Versions
+- **1.1.3**: Code cleanup (removed comments/blank lines).
+- **1.1.2**: Fixed Lua error in `resetButton` handler by storing checkbox frames directly.
+- **1.1.1**: Consolidated timers with `InitializePvPChecks`, moved `InitializeBlockFrame` to `PLAYER_LOGIN`, replaced `OnUpdate` with `C_Timer.After` for `SecureDisablePvP`, removed redundant events (`ZONE_CHANGED`, `ZONE_CHANGED_INDOORS`), used table-based UI and slash command creation, increased `OnUpdate` interval to 0.2 seconds.
+- **1.1.0**: Stable release with all core features, initial warning after 3 seconds, 60-second interval checks, and safety features.
+
+## 📋 Notes
+
+- **Performance**: Optimized for minimal CPU usage with `C_Timer` and reduced `OnUpdate` frequency (0.2 seconds).
+- **Testing**: Extensively tested on Project Epoch.
+- **Feedback**: Share issues or suggestions in the `#addons` Discord channel of Project Epoch or on [GitHub](https://github.com/ToolzGG/PurgePvP).
+- **Future Features**:
+  - Customizable warning intervals (e.g., 30/60/120 seconds).
+  - Adjustable warning text, color, and sound.
+  - Enhanced pet detection with `UnitCreatureType`.
+  - Further event-based optimization to replace `OnUpdate`.
+
+## 📜 License
+
+Distributed under the MIT License. See `LICENSE` file in the repository for details.
+
+## 👨‍💻 Author
+
+Developed by **ToolzGG** with support from Grok 3 (xAI).
+
+---
+*PurgePvP: Keep your PvP status in check and stay safe on Epoch! 🛡️*
