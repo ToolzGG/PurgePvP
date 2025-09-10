@@ -267,4 +267,3 @@ SlashCmdList["PURGEPVP"] = function(msg)
         end
     end
 end
-
