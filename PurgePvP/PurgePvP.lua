@@ -10,7 +10,7 @@ local defaultSettings = {
     enableWarningSound = true,
     enableFlightWarningDisable = true,
 }
-local BLOCK_FRAME_SIZE = 50
+local BLOCK_FRAME_SIZE = 10
 local addon = {
     frame = CreateFrame("Frame"),
     blockFrame = nil,
@@ -267,3 +267,4 @@ SlashCmdList["PURGEPVP"] = function(msg)
         end
     end
 end
+
