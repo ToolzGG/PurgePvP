@@ -6,6 +6,3 @@
 ## SavedVariables: PurgePvPDB
 
 PurgePvP.lua
-
-
-
